@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { importRoutes } from '../Config/routeHandler.config.js';
 import { corsConfig } from '../Middlewares/cors.middleware.js';
 import { rateLimitMiddleware } from '../Middlewares/rateLimiter.middleware.js';
+import { notFoundMiddleware } from '../Middlewares/notFound.middleware.js';
 import { dbConnection } from '../Database/connection.js';
 
 dotenv.config({ path: '.env' });
@@ -20,5 +21,7 @@ app
     .use(express.json())
     .use(morgan('combined'))
     .use(router)
+    .disable('x-powered-by')
+    .use(notFoundMiddleware)
 
 export default app;
