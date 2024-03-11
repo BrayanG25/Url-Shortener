@@ -2,6 +2,12 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { readdir } from 'node:fs/promises';
 
+/**
+    * Dynamically import and mount routes into the Express router.
+    * @function importRoutes
+    * @param {express.Router} router - The Express router instance to mount the routes on.
+    * @returns {Promise<void>} A promise that resolves when all routes are imported and mounted.
+*/
 export const importRoutes = async (router) => {
     try {
         const routesDir = join(dirname(fileURLToPath(import.meta.url)), '../Routes');

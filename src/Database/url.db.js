@@ -1,6 +1,12 @@
 import { dbConnection } from './connection.js';
 import { validateResults, handleQueryError } from './function.db.js';
 
+/**
+    * Retrieves all URL records from the database.
+    * @function getUrlRecords
+    * @returns {Promise<Array<Object>>} A promise that resolves to an array of URL records.
+    * @throws {Error} Throws an error if the database query fails or returns no records.
+*/
 export const getUrlRecords = async () => {
     try {
         const sql = `
@@ -19,6 +25,16 @@ export const getUrlRecords = async () => {
     }
 };
 
+/**
+    * Creates a new URL record in the database.
+    * @function createUrlRecord
+    * @param {string} url The original URL.
+    * @param {string} shortenedUrl The shortened URL.
+    * @param {string} codeUrl The code URL.
+    * @param {string} expirationDate The expiration date of the URL.
+    * @returns {Promise<number>} A promise that resolves to the ID of the newly created record.
+    * @throws {Error} Throws an error if the database query fails.
+*/
 export const createUrlRecord = async (url, shortenedUrl, codeUrl, expirationDate) => {
     try {
         const sql = `
@@ -36,6 +52,13 @@ export const createUrlRecord = async (url, shortenedUrl, codeUrl, expirationDate
     }
 };
 
+/**
+    * Finds the original URL record in the database by its shortened code.
+    * @function findOriginalUrlByShortenedCode
+    * @param {string} codeUrl The code URL of the shortened URL.
+    * @returns {Promise<Array>} A promise that resolves to an array containing the original URL record.
+    * @throws {Error} Throws an error if the database query fails or if no records are found.
+*/
 export const findOriginalUrlByShortenedCode = async (codeUrl) => {
     try {
         const sql = `

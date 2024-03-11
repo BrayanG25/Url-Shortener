@@ -4,29 +4,29 @@ Este repositorio contiene el proyecto de un acortador de URLs.
 
 ## Introducción
 
-El acortador de URL es una aplicación web que permite a los usuarios convertir URLs largas en enlaces más cortos y manejables. Proporciona una forma conveniente de compartir enlaces, especialmente en plataformas con limitaciones de caracteres como Twitter.
+El acortador de URL es una herramienta útil en internet, que facilita la tarea de compartir enlaces en plataformas con limitaciones de caracteres como Twitter. Esta aplicación proporciona una forma rápida y conveniente de generar enlaces acortados que redirigen a las URLs largas originales.
 
 ## Características
 
-- Acorta URLs largas en enlaces compactos y fáciles de compartir.
-- Redirige a los usuarios desde los enlaces acortados a las URLs largas originales.
-- Realiza un seguimiento y análisis de estadísticas de uso, como el número de clics en cada enlace acortado.
-- Fecha de vencimiento para las URLs acortadas para desactivar automáticamente los enlaces después de un período especificado.
+- **Acortamiento de URLs**: Convierte URLs largas en enlaces compactos y fáciles de compartir.
+- **Redirección de URLs**: Redirige a los usuarios desde los enlaces acortados a las URLs largas originales.
+- **Seguimiento de Estadísticas**: Realiza un seguimiento y análisis de estadísticas de uso, como el número de clics en cada enlace acortado.
+- **Fecha de Vencimiento**: Permite establecer una fecha de vencimiento para las URLs acortadas para desactivar automáticamente los enlaces después de un período especificado.
 
 ## Tecnologías Utilizadas
 
-- Node.js
-- Express.js
-- MySQL (u otra base de datos relacional)
+- **Node.js**: Entorno de ejecución de JavaScript del lado del servidor.
+- **Express.js**: Framework web para Node.js que facilita la creación de aplicaciones web y APIs.
+- **MySQL (u otra base de datos relacional)**: Base de datos relacional para almacenar información sobre las URLs acortadas y sus estadísticas.
 
 ## Empezando
 
 Para comenzar con el acortador de URL, sigue estos pasos:
 
-1. Clona el repositorio en tu máquina local.
-2. Instala las dependencias necesarias usando `npm install`.
-3. Configura tu base de datos y la conexión en la aplicación.
-4. Ejecuta la aplicación usando `npm start`.
+1. **Clona el repositorio**
+2. **Instala las dependencias**: `npm install`
+3. **Configura la base de datos**: Configura tu base de datos MySQL y la conexión en la aplicación.
+4. **Ejecuta la aplicación**: `npm start`
 
 ## Uso
 

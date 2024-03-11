@@ -27,4 +27,11 @@ const corsOptions = {
     methods: ['GET', 'POST']
 };
 
+/**
+    * Configures CORS (Cross-Origin Resource Sharing) middleware with custom options.
+    * @param {object} req - The request object.
+    * @param {object} res - The response object.
+    * @param {function} next - The next middleware function in the application's request-response cycle.
+    * @returns {void}
+*/
 export const corsConfig = cors(corsOptions);

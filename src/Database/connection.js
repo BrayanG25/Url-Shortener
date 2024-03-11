@@ -3,7 +3,16 @@ import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
 
+/**
+    * Represents a database connection.
+    * @class DatabaseConnection
+*/
 class DatabaseConnection {
+    /**
+        * Creates an instance of DatabaseConnection.
+        * @constructor
+        * @throws {Error} Throws an error if any required environment variables are missing or if there's an error establishing the database connection.
+    */
     constructor() {
         const requiredEnvVariables = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_DATABASE', 'DB_PORT'];
         const missingVariables = requiredEnvVariables.filter(variable => !process.env[variable]);
@@ -27,6 +36,11 @@ class DatabaseConnection {
         this.connect();
     }
 
+    /**
+        * Establishes the database connection.
+        * @method connect
+        * @throws {Error} Throws an error if there's an error establishing the database connection.
+    */
     async connect() {
         try {
             this.connection = await mysql.createPool(this.connectionConfig);
@@ -47,6 +61,14 @@ class DatabaseConnection {
         }
     }
 
+    /**
+        * Executes a SQL query.
+        * @method query
+        * @param {string} sql The SQL query string.
+        * @param {Array} [values] Optional values to be escaped and inserted into placeholders.
+        * @returns {Promise<{ results: Array, fields: Array }>} A promise that resolves to an object containing the query results and fields.
+        * @throws {Error} Throws an error if there's an error executing the query.
+    */
     async query(sql, values) {
         try {
             const [results, fields] = await this.connection.query(sql, values);
@@ -64,6 +86,11 @@ class DatabaseConnection {
         }
     }
 
+    /**
+        * Closes the database connection.
+        * @method end
+        * @throws {Error} Throws an error if there's an error closing the connection.
+    */
     async end() {
         try {
             await this.connection.end();

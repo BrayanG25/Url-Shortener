@@ -1,0 +1,26 @@
+{
+    "source": {
+        "include": [
+            "src/App/",
+            "src/Config/",
+            "src/Controllers/",
+            "src/Database/",
+            "src/Functions/",
+            "src/Lib/",
+            "src/Middlewares/",
+            "src/Models/",
+            "src/Routes/",
+            "src/Test/",
+            "src/Tools/",
+            "src/Utils/",
+            "index.js"
+        ],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "exclude": ["node_modules", "docs"]
+    },
+    "plugins": [],
+    "opts": {
+        "destination": "docs",
+        "template": "node_modules/docdash"
+    }
+}

@@ -2,6 +2,13 @@ import { sendStandardResponse } from '../Utils/responseBuilder.util.js';
 import { findOriginalUrlByShortenedCode } from '../Database/url.db.js';
 import { logAnalytics } from '../Database/analyticsUrl.db.js';
 
+/**
+    * Redirects users to the original URL associated with the given shortened code.
+    * @function redirectOriginalUrl
+    * @param {express.Request} req - The Express request object containing the shortened code in the parameters.
+    * @param {express.Response} res - The Express response object used to redirect users or send error responses.
+    * @returns {void} This function does not return anything.
+*/
 export const redirectOriginalUrl = async (req, res) => {
     try {
         const { shortenedCode } = req.params;

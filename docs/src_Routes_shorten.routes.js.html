@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>src/Routes/shorten.routes.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DatabaseConnection.html">DatabaseConnection</a></li><li></li></ul><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-index.html">index</a><ul class='methods'><li data-type='method'><a href="module-index.html#~startServer">startServer</a></li></ul></li><li><a href="module-shortenRoutes.html">shortenRoutes</a><ul class='methods'><li data-type='method'><a href="module-shortenRoutes.html#.DELETE/api/v1/shorten/:id">DELETE/api/v1/shorten/:id</a></li><li data-type='method'><a href="module-shortenRoutes.html#.GET/api/v1/shorten">GET/api/v1/shorten</a></li><li data-type='method'><a href="module-shortenRoutes.html#.GET/api/v1/shorten/:id">GET/api/v1/shorten/:id</a></li><li data-type='method'><a href="module-shortenRoutes.html#.PATCH/api/v1/shorten/:id">PATCH/api/v1/shorten/:id</a></li><li data-type='method'><a href="module-shortenRoutes.html#.POST/api/v1/shorten">POST/api/v1/shorten</a></li><li data-type='method'><a href="module-shortenRoutes.html#.PUT/api/v1/shorten/:id">PUT/api/v1/shorten/:id</a></li></ul></li><li><a href="module-uRoutes.html">uRoutes</a><ul class='methods'><li data-type='method'><a href="module-uRoutes.html#.GET/api/v1/u/:shortenedCode">GET/api/v1/u/:shortenedCode</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#connect">connect</a></li><li><a href="global.html#convertToMySQLDate">convertToMySQLDate</a></li><li><a href="global.html#corsConfig">corsConfig</a></li><li><a href="global.html#createUrl">createUrl</a></li><li><a href="global.html#createUrlRecord">createUrlRecord</a></li><li><a href="global.html#deleteUrl">deleteUrl</a></li><li><a href="global.html#end">end</a></li><li><a href="global.html#findOriginalUrlByShortenedCode">findOriginalUrlByShortenedCode</a></li><li><a href="global.html#generateShortenedUrl">generateShortenedUrl</a></li><li><a href="global.html#generateUniqueCode">generateUniqueCode</a></li><li><a href="global.html#getUrl">getUrl</a></li><li><a href="global.html#getUrlRecords">getUrlRecords</a></li><li><a href="global.html#handleQueryError">handleQueryError</a></li><li><a href="global.html#importRoutes">importRoutes</a></li><li><a href="global.html#isLeapYear">isLeapYear</a></li><li><a href="global.html#isValidDate">isValidDate</a></li><li><a href="global.html#isValidDayMonthCombination">isValidDayMonthCombination</a></li><li><a href="global.html#isValidExpirationDate">isValidExpirationDate</a></li><li><a href="global.html#isValidUrl">isValidUrl</a></li><li><a href="global.html#logAnalytics">logAnalytics</a></li><li><a href="global.html#notFoundMiddleware">notFoundMiddleware</a></li><li><a href="global.html#query">query</a></li><li><a href="global.html#rateLimitMiddleware">rateLimitMiddleware</a></li><li><a href="global.html#redirectOriginalUrl">redirectOriginalUrl</a></li><li><a href="global.html#sendStandardResponse">sendStandardResponse</a></li><li><a href="global.html#updateUrl">updateUrl</a></li><li><a href="global.html#validateResults">validateResults</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">src/Routes/shorten.routes.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Router } from 'express';
+import { getUrl, createUrl, updateUrl, deleteUrl } from '../Controllers/shorten.controller.js';
+
+/**
+    * Module for defining routes related to URL shortening operations.
+    * @module shortenRoutes
+*/
+const router = Router();
+
+/**
+    * Route handler for retrieving URL records.
+    * @name GET/api/v1/shorten
+    * @function
+    * @memberof module:shortenRoutes
+    * @returns {void}
+*/
+router.get('/', getUrl);
+
+/**
+    * Route handler for retrieving a specific URL record by ID.
+    * @name GET/api/v1/shorten/:id
+    * @function
+    * @memberof module:shortenRoutes
+    * @param {string} id - The ID of the URL record to retrieve.
+    * @returns {void}
+*/
+router.get('/:id', getUrl);
+
+/**
+    * Route handler for creating a new shortened URL.
+    * @name POST/api/v1/shorten
+    * @function
+    * @memberof module:shortenRoutes
+    * @returns {void}
+*/
+router.post('/', createUrl);
+
+/**
+    * Route handler for updating an existing URL record.
+    * @name PUT/api/v1/shorten/:id
+    * @function
+    * @memberof module:shortenRoutes
+    * @param {string} id - The ID of the URL record to update.
+    * @returns {void}
+*/
+router.put('/:id', updateUrl);
+
+/**
+    * Route handler for partially updating an existing URL record.
+    * @name PATCH/api/v1/shorten/:id
+    * @function
+    * @memberof module:shortenRoutes
+    * @param {string} id - The ID of the URL record to update.
+    * @returns {void}
+*/
+router.patch('/:id', updateUrl);
+
+/**
+    * Route handler for deleting an existing URL record.
+    * @name DELETE/api/v1/shorten/:id
+    * @function
+    * @memberof module:shortenRoutes
+    * @param {string} id - The ID of the URL record to delete.
+    * @returns {void}
+*/
+router.delete('/:id', deleteUrl);
+
+export default router;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sun Mar 10 2024 20:34:37 GMT-0500 (hora estándar de Colombia) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

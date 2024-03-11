@@ -4,6 +4,13 @@ import { generateUniqueCode, generateShortenedUrl, isValidExpirationDate } from 
 import { isValidUrl } from '../Functions/url.function.js';
 import { convertToMySQLDate } from '../Functions/date.function.js';
 
+/**
+    * Retrieves URLs from the database and sends a response with the retrieved data.
+    * @function getUrl
+    * @param {express.Request} req - The Express request object.
+    * @param {express.Response} res - The Express response object.
+    * @returns {Promise<void>} A promise that resolves when the response is sent.
+*/
 export const getUrl = async (req, res) => {
     try {
         const response = await getUrlRecords();
@@ -15,6 +22,13 @@ export const getUrl = async (req, res) => {
     }
 }
 
+/**
+    * Creates a shortened URL based on the provided parameters and inserts it into the database.
+    * @function createUrl
+    * @param {express.Request} req - The Express request object.
+    * @param {express.Response} res - The Express response object.
+    * @returns {Promise<void>} A promise that resolves when the response is sent.
+*/
 export const createUrl = async (req, res) => {
     try {
         const requiredKeys = ['url', 'baseUrl'];
@@ -57,6 +71,13 @@ export const createUrl = async (req, res) => {
     }
 }
 
+/**
+    * Updates a URL in the database.
+    * @function updateUrl
+    * @param {express.Request} req - The Express request object.
+    * @param {express.Response} res - The Express response object.
+    * @returns {void} This function does not return anything.
+*/
 export const updateUrl = (req, res) => {
     try {
         sendStandardResponse(res, true, 'Url updated', 200);
@@ -67,6 +88,13 @@ export const updateUrl = (req, res) => {
     }
 }
 
+/**
+    * Deletes a URL from the database.
+    * @function deleteUrl
+    * @param {express.Request} req - The Express request object.
+    * @param {express.Response} res - The Express response object.
+    * @returns {void} This function does not return anything.
+*/
 export const deleteUrl = async (req, res) => {
     try {
         sendStandardResponse(res, true, 'Url deleted', 200);
